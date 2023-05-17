@@ -10,13 +10,17 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,46 +46,55 @@ class BusinessCard : ComponentActivity() {
 
 @Composable
 fun BusinessCardScreen() {
-    Column {
-        InfoCard()
-        ContactCard()
+    Box(modifier = Modifier.fillMaxSize()) {
+        InfoCard(modifier = Modifier.align(Alignment.Center))
+        ContactCard(modifier = Modifier.align(Alignment.BottomCenter))
     }
 }
 
 @Composable
 fun InfoCard(modifier: Modifier = Modifier) {
     Column(
+        modifier = modifier,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(id = R.drawable.androidparty),
+            painter = painterResource(id = R.drawable.ic_task),
             contentDescription = null,
-            contentScale = ContentScale.FillBounds,
-            modifier = Modifier.size(40.dp)
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.size(80.dp)
         )
-        Text(text = "Shashank Singh", fontSize = 24.sp)
-        Text(text = "Android Developer", fontSize = 16.sp)
+        Text(
+            text = "Shashank Singh",
+            fontSize = 32.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 8.dp)
+        )
+        Text(
+            text = "Android Developer",
+            fontSize = 18.sp,
+            modifier = Modifier.padding(top = 4.dp)
+        )
     }
 }
 
 @Composable
 fun ContactCard(modifier: Modifier = Modifier) {
     Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Bottom,
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = modifier
+            .padding(16.dp),
     ) {
         ContactInformation(
-            icon = Icons.Filled.Menu,
-            info = "+91 987543321"
+            icon = Icons.Filled.Phone,
+            info = "+91 987543321",
         )
         ContactInformation(
-            icon = Icons.Filled.Menu,
+            icon = Icons.Filled.Person,
             info = "@shalatan.heif"
         )
         ContactInformation(
-            icon = Icons.Filled.Menu,
+            icon = Icons.Filled.Email,
             info = "shashanksingh6688@gmail.com"
         )
     }
@@ -89,9 +102,15 @@ fun ContactCard(modifier: Modifier = Modifier) {
 
 @Composable
 fun ContactInformation(icon: ImageVector, info: String) {
-    Row(modifier = Modifier.padding(4.dp)) {
-        Icon(imageVector = icon, contentDescription = null)
-        Text(text = info, modifier = Modifier.padding(start = 8.dp))
+    Row(
+        modifier = Modifier
+            .padding(4.dp)
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(imageVector = icon, contentDescription = null, tint = Color(0xFF007E38))
+        Text(text = info, modifier = Modifier.padding(start = 8.dp), color = Color(0xFF007E38))
     }
 }
 
