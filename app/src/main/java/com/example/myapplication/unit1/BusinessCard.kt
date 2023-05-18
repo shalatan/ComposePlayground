@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
-import com.example.myapplication.unit1.ui.theme.MyApplicationTheme
+import com.example.myapplication.ui.theme.MyApplicationTheme
 
 class BusinessCard : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,7 +74,8 @@ fun InfoCard(modifier: Modifier = Modifier) {
         Text(
             text = "Android Developer",
             fontSize = 18.sp,
-            modifier = Modifier.padding(top = 4.dp)
+            modifier = Modifier.padding(top = 4.dp),
+            color = Color(0xFF007E38)
         )
     }
 }
@@ -110,7 +111,7 @@ fun ContactInformation(icon: ImageVector, info: String) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(imageVector = icon, contentDescription = null, tint = Color(0xFF007E38))
-        Text(text = info, modifier = Modifier.padding(start = 8.dp), color = Color(0xFF007E38))
+        Text(text = info, modifier = Modifier.padding(start = 8.dp))
     }
 }
 

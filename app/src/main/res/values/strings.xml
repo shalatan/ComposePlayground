@@ -20,4 +20,11 @@
     <string name="cc_title">Column composable</string>
     <string name="cc_desc">A layout composable that places its children in a vertical sequence.</string>
     <string name="title_activity_business_card">BusinessCard</string>
+    <string name="title_activity_dice_roller">DiceRoller</string>
+    <string name="title_activity_lemonade">Lemonade</string>
+
+    <string name="lemon_tree">Tap the lemon tree to select a lemon</string>
+    <string name="lemon_drink">Tap the lemonade to drink it</string>
+    <string name="lemon_squeeze">Keep tapping the lemon to squeeze it</string>
+    <string name="lemon_restart">Tap the empty glass to start again</string>
 </resources>
