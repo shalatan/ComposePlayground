@@ -34,4 +34,5 @@
     <string name="title_activity_tip_calculator">TipCalculator</string>
     <string name="how_was_the_service">Tip Percentage</string>
     <string name="round_up_tip">Round up tip?</string>
+    <string name="title_activity_art_space">ArtSpace</string>
 </resources>
