@@ -11,6 +11,7 @@
     <string name="nice_work">Nice work!</string>
     <string name="title_activity_compose_quadrant">ComposeQuadrant</string>
 
+    <!--    composeQuadrant-->
     <string name="tc_title">Text composable</string>
     <string name="tc_desc">Displays text and follows the recommended Material Design guidelines.</string>
     <string name="ic_title">Image composable</string>
@@ -23,11 +24,13 @@
     <string name="title_activity_dice_roller">DiceRoller</string>
     <string name="title_activity_lemonade">Lemonade</string>
 
+    <!--    lemonadeApp-->
     <string name="lemon_tree">Tap the lemon tree to select a lemon</string>
     <string name="lemon_drink">Tap the lemonade to drink it</string>
     <string name="lemon_squeeze">Keep tapping the lemon to squeeze it</string>
     <string name="lemon_restart">Tap the empty glass to start again</string>
 
+    <!--    tipCalculatorApp-->
     <string name="calculate_tip">Calculate Tip</string>
     <string name="bill_amount">Bill Amount</string>
     <string name="tip_amount">Tip Amount: %s</string>
@@ -37,6 +40,7 @@
     <string name="title_activity_art_space">ArtSpace</string>
     <string name="title_activity_affirmation_app">AffirmationApp</string>
 
+    <!--    affirmationApp-->
     <string name="affirmation1">I am strong.</string>
     <string name="affirmation2">I believe in myself.</string>
     <string name="affirmation3">Each day is a new opportunity to grow and be a better version of myself.</string>
@@ -48,6 +52,7 @@
     <string name="affirmation9">Things will unfold at precisely the right time.</string>
     <string name="affirmation10">I will be present in all the moments that this day brings.</string>
 
+    <!--    topicApp-->
     <string name="architecture">Architecture</string>
     <string name="crafts">Crafts</string>
     <string name="business">Business</string>
@@ -63,4 +68,28 @@
     <string name="photography">Photography</string>
     <string name="tech">Tech</string>
     <string name="title_activity_topics_app">TopicsApp</string>
+    <string name="title_activity_woof_app">WoofApp</string>
+
+    <!--    woof-->
+    <string name="dog_name_1">Koda</string>
+    <string name="dog_name_2">Lola</string>
+    <string name="dog_name_3">Frankie</string>
+    <string name="dog_name_4">Nox</string>
+    <string name="dog_name_5">Faye</string>
+    <string name="dog_name_6">Bella</string>
+    <string name="dog_name_7">Moana</string>
+    <string name="dog_name_8">Tzeitel</string>
+    <string name="dog_name_9">Leroy</string>
+    <string name="dog_description_1">Eating treats on the terrace</string>
+    <string name="dog_description_2">Barking at Daddy</string>
+    <string name="dog_description_3">Stealing socks</string>
+    <string name="dog_description_4">Meeting new animals</string>
+    <string name="dog_description_5">Digging in the garden</string>
+    <string name="dog_description_6">Chasing sea foam</string>
+    <string name="dog_description_7">Bothering her paw-rents</string>
+    <string name="dog_description_8">Sunbathing</string>
+    <string name="dog_description_9">Sleeping in dangerous places</string>
+    <string name="about">About:</string>
+    <string name="years_old">%d years old</string>
+    <string name="expand_button_content_description">See more or less information about a dog.</string>
 </resources>
