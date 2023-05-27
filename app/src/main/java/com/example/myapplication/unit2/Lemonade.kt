@@ -39,8 +39,8 @@ class Lemonade : ComponentActivity() {
 
 @Composable
 fun LemonadeScreen(modifier: Modifier = Modifier) {
-    var stage by remember { mutableStateOf(1) }
-    var taps by remember { mutableStateOf(0) }
+    var stage by remember { mutableIntStateOf(1) }
+    var taps by remember { mutableIntStateOf(0) }
     when (stage) {
         1 -> LemonadeCard(
             picture = R.drawable.lemon_tree,
@@ -48,7 +48,9 @@ fun LemonadeScreen(modifier: Modifier = Modifier) {
             onImageClick = {
                 stage = 2
                 taps = (4..8).random()
-            })
+            }, modifier = modifier
+        )
+
         2 -> LemonadeCard(
             picture = R.drawable.lemon_squeeze,
             message = stringResource(id = R.string.lemon_squeeze),
@@ -58,10 +60,12 @@ fun LemonadeScreen(modifier: Modifier = Modifier) {
                     stage = 3
                 }
             })
+
         3 -> LemonadeCard(
             picture = R.drawable.lemon_drink,
             message = stringResource(id = R.string.lemon_drink),
             onImageClick = { stage = 4 })
+
         4 -> LemonadeCard(
             picture = R.drawable.lemon_restart,
             message = stringResource(id = R.string.lemon_restart),
