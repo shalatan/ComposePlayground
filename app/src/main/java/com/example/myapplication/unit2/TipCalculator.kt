@@ -22,7 +22,6 @@ import com.example.myapplication.R
 import com.example.myapplication.ui.materialTheme.MyApplicationTheme
 import java.text.NumberFormat
 
-//TODO completed: stateHoisting example
 //TODO: complete testing codeLab later
 class TipCalculator : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
