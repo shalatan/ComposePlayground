@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Compose Playground</string>
     <string name="title_activity_compose_basic">ComposeBasic</string>
     <string name="title_activity_task_manager">TaskManager</string>
 
@@ -92,4 +92,19 @@
     <string name="about">About:</string>
     <string name="years_old">%d years old</string>
     <string name="expand_button_content_description">See more or less information about a dog.</string>
+    <string name="title_activity_superheroes_app">SuperheroesApp</string>
+
+    <!--    superheroesApp-->
+    <string name="hero1">Nick the Night and Day</string>
+    <string name="description1">The Jetpack Hero</string>
+    <string name="hero2">Reality Protector</string>
+    <string name="description2">Understands the absolute truth</string>
+    <string name="hero3">Andre the Giant</string>
+    <string name="description3">Mimics the light and night to blend in</string>
+    <string name="hero4">Benjamin the Brave</string>
+    <string name="description4">Harnesses the power of canary to develop bravely</string>
+    <string name="hero5">Magnificent Maru</string>
+    <string name="description5">Effortlessly glides in to save the day</string>
+    <string name="hero6">Dynamic Yasmine</string>
+    <string name="description6">Ability to shift to any form and energize</string>
 </resources>

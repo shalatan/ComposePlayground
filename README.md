@@ -21,3 +21,4 @@
 - TopicsApp (Project: LazyXGrid)
 - WoofApp (Weight, Material Design: Theme, Shapes, Typography, Scaffold, MaterialIcons, Animation:
   animateXasState, animateContentSize)
+- SuperheroesApp (Project)

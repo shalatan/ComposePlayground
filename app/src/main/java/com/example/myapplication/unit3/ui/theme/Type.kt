@@ -18,6 +18,11 @@ val Montserrat = FontFamily(
 )
 
 val Typography = Typography(
+    displaySmall = TextStyle(
+        fontFamily = AbrilFatface,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp
+    ),
     displayLarge = TextStyle(
         fontFamily = AbrilFatface,
         fontWeight = FontWeight.Normal,
@@ -36,6 +41,8 @@ val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
+        fontSize = 14.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
     )
 )

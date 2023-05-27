@@ -22,10 +22,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.Expand
-import androidx.compose.material.icons.filled.More
-import androidx.compose.material.icons.outlined.ArrowDropDown
 import androidx.compose.material.icons.outlined.ExpandLess
 import androidx.compose.material.icons.outlined.ExpandMore
 import androidx.compose.material3.Card
@@ -94,10 +90,7 @@ class WoofApp : ComponentActivity() {
 
 @Composable
 fun WoofAppScreen() {
-    Scaffold(
-        topBar = {
-            WoofTopAppBar()
-        }) { it ->
+    Scaffold(topBar = { WoofTopAppBar() }) { it ->
         LazyColumn(contentPadding = it) {
             items(DogsDataSource.dogs) {
                 DogItem(
@@ -270,12 +263,3 @@ fun GreetingPreview2() {
         WoofAppScreen()
     }
 }
-
-//@Preview
-@Composable
-fun GreetingPreview2Dark() {
-    MyApplicationTheme(darkTheme = true) {
-        WoofAppScreen()
-    }
-}
-
