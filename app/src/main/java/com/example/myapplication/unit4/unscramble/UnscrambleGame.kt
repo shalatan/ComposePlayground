@@ -45,6 +45,9 @@ import com.example.myapplication.unit3.ui.theme.MyApplicationTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 class UnscrambleGame : ComponentActivity() {
+
+    val SCORE_INCREASE = 100
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -87,7 +90,9 @@ fun GameScreen(
             isGuessWrong = gameUIState.isGuessedWordWrong,
             userGuess = viewModel.userGuess,
             onUserGuessChanged = { viewModel.updateUserGuess(it) },
-            onKeyboardDone = { viewModel.checkUserGuess() })
+            onKeyboardDone = { viewModel.checkUserGuess() },
+            wordCount = gameUIState.currentWordCount
+        )
         Button(
             onClick = { viewModel.checkUserGuess() },
             modifier = Modifier
@@ -97,14 +102,17 @@ fun GameScreen(
             Text(text = stringResource(id = R.string.submit))
         }
         OutlinedButton(
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.skipWord() },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(mediumPadding)
         ) {
             Text(text = stringResource(id = R.string.skip))
         }
-        GameStatus(100, modifier = Modifier)
+        GameStatus(gameUIState.score, modifier = Modifier)
+        if (gameUIState.isGameOver){
+            FinalScoreDialog(score = gameUIState.score, onPlayAgain = { viewModel.resetGame() })
+        }
     }
 }
 
@@ -114,6 +122,7 @@ fun GameLayout(
     userGuess: String,
     isGuessWrong: Boolean,
     question: Int,
+    wordCount: Int,
     onUserGuessChanged: (String) -> Unit,
     onKeyboardDone: () -> Unit,
     modifier: Modifier = Modifier
@@ -132,7 +141,7 @@ fun GameLayout(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "$question/10",
+                text = "$wordCount/10",
                 modifier = Modifier
                     .align(Alignment.End)
                     .background(MaterialTheme.colorScheme.surfaceTint)
