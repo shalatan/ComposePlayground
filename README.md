@@ -22,3 +22,8 @@
 - WoofApp (Weight, Material Design: Theme, Shapes, Typography, Scaffold, MaterialIcons, Animation:
   animateXasState, animateContentSize)
 - SuperheroesApp (Project)
+
+## Unit 4
+
+- UnsccrambleGame (StateFlow, ViewModel)
+- DessertClicker (Project)
