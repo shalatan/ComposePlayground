@@ -27,3 +27,4 @@
 
 - UnsccrambleGame (StateFlow, ViewModel)
 - DessertClicker (Project)
+- CupCakeApp (Navigation Component, Navigate to other apps)
