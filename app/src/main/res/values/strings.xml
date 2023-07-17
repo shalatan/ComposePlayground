@@ -161,4 +161,5 @@
         <item quantity="other">%d cupcakes</item>
     </plurals>
     <string name="title_activity_cup_cake">CupCake</string>
+    <string name="title_activity_instagram">InstagramActivity</string>
 </resources>
