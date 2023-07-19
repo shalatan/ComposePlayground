@@ -1,4 +1,4 @@
-package com.example.myapplication.clones.instagram.ui.theme
+package com.example.myapplication.clones.instagram.theme
 
 import android.app.Activity
 import android.os.Build
@@ -38,7 +38,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun MyApplicationTheme(
+fun InstagramTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

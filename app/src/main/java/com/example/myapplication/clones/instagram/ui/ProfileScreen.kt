@@ -1,4 +1,4 @@
-package com.example.myapplication.clones.instagram
+package com.example.myapplication.clones.instagram.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -14,12 +14,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Tab
+import androidx.compose.material.TabRow
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -27,9 +32,15 @@ import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -44,20 +55,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
+import com.example.myapplication.clones.instagram.model.IconWithText
 import com.example.myapplication.clones.instagram.InstagramDatasource as data
 import com.example.myapplication.clones.instagram.model.StoryHighlight
-import com.example.myapplication.ui.theme.MyApplicationTheme
+import com.example.myapplication.clones.instagram.theme.InstagramTheme
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview6() {
-    MyApplicationTheme {
+    InstagramTheme {
         ProfileScreen()
     }
 }
 
 @Composable
 fun ProfileScreen() {
+    var selectedTabIndex by rememberSaveable {
+        mutableIntStateOf(0)
+    }
     Scaffold(topBar = { InstagramAppBar(name = data.userId) }) { it ->
         Column(
             modifier = Modifier
@@ -75,6 +90,27 @@ fun ProfileScreen() {
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp)
             )
+            Spacer(modifier = Modifier.height(16.dp))
+//            PostTabView(imageWithTexts = data.profileTabs,
+//                onTabSelected = { selectedIndex: Int ->
+//                })
+            PostTabView(imageWithTexts = data.profileTabs) { selectedIndex ->
+                selectedTabIndex = selectedIndex
+                when (selectedTabIndex) {
+                    0 -> {
+                    }
+
+                    1 -> {
+                    }
+
+                    2 -> {
+                    }
+
+                    3 -> {
+                    }
+                }
+            }
+            PostSection(posts = data.posts)
         }
     }
 }
@@ -127,7 +163,7 @@ fun ProfileDetailSection(modifier: Modifier = Modifier) {
                 .padding(horizontal = 18.dp)
         ) {
             RoundImage(
-                image = painterResource(id = R.drawable.bella),
+                image = painterResource(id = R.drawable.dog_bella),
                 modifier = Modifier
                     .size(100.dp)
                     .weight(3f)
@@ -301,8 +337,7 @@ fun SingleHighlight(storyHighlight: StoryHighlight, modifier: Modifier = Modifie
         modifier = modifier.padding(end = 16.dp), horizontalAlignment = Alignment.CenterHorizontally
     ) {
         RoundImage(
-            image = painterResource(id = storyHighlight.image),
-            modifier = Modifier.size(70.dp)
+            image = painterResource(id = storyHighlight.image), modifier = Modifier.size(70.dp)
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
@@ -310,5 +345,64 @@ fun SingleHighlight(storyHighlight: StoryHighlight, modifier: Modifier = Modifie
             overflow = TextOverflow.Ellipsis,
             textAlign = TextAlign.Center
         )
+    }
+}
+
+@Composable
+fun PostTabView(
+    modifier: Modifier = Modifier,
+    imageWithTexts: List<IconWithText>,
+    onTabSelected: (selectedIndex: Int) -> Unit
+) {
+    var selectedTabIndex by remember {
+        mutableIntStateOf(0)
+    }
+    val inactiveColor = Color(0xFF777777)
+    TabRow(
+        selectedTabIndex = selectedTabIndex,
+        backgroundColor = Color.Transparent,
+        contentColor = Color.Black,
+        modifier = modifier
+    ) {
+        imageWithTexts.forEachIndexed { index, item ->
+            Tab(selected = selectedTabIndex == index,
+                selectedContentColor = Color.Black,
+                unselectedContentColor = inactiveColor,
+                onClick = {
+                    selectedTabIndex = index
+                    onTabSelected(index)
+                }) {
+                Icon(
+                    imageVector = item.vector,
+                    contentDescription = item.text,
+                    tint = if (selectedTabIndex == index) Color.Black else inactiveColor,
+                    modifier = modifier
+                        .padding(10.dp)
+                        .size(20.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun PostSection(
+    posts: List<Int>, modifier: Modifier = Modifier
+) {
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(3),
+        //to hide the paddings on the corner sides of posts
+        modifier = modifier.scale(1.01f)
+    ) {
+        items(posts) {
+            Image(
+                painter = painterResource(id = it),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .border(1.dp, color = Color.White)
+            )
+        }
     }
 }

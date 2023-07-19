@@ -1,4 +1,4 @@
-package com.example.myapplication.clones.instagram.ui.theme
+package com.example.myapplication.clones.instagram.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

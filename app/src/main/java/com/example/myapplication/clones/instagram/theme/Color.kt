@@ -1,4 +1,4 @@
-package com.example.myapplication.clones.instagram.ui.theme
+package com.example.myapplication.clones.instagram.theme
 
 import androidx.compose.ui.graphics.Color
 
