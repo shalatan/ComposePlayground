@@ -22,15 +22,11 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Scaffold
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -69,86 +65,46 @@ fun GreetingPreview6() {
 }
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(modifier: Modifier = Modifier) {
     var selectedTabIndex by rememberSaveable {
         mutableIntStateOf(0)
     }
-    Scaffold(topBar = { InstagramAppBar(name = data.userId) }) { it ->
-        Column(
+    Column(
+        modifier = modifier.fillMaxSize()
+    ) {
+        Spacer(modifier = Modifier.height(16.dp))
+        ProfileDetailSection()
+        Spacer(modifier = Modifier.height(8.dp))
+        ButtonSection(modifier = Modifier)
+        Spacer(modifier = Modifier.height(16.dp))
+        HighlightSection(
+            highlights = data.highlights,
             modifier = Modifier
-                .fillMaxSize()
-                .padding(it)
-        ) {
-            Spacer(modifier = Modifier.height(16.dp))
-            ProfileDetailSection()
-            Spacer(modifier = Modifier.height(8.dp))
-            ButtonSection(modifier = Modifier)
-            Spacer(modifier = Modifier.height(16.dp))
-            HighlightSection(
-                highlights = data.highlights,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
 //            PostTabView(imageWithTexts = data.profileTabs,
 //                onTabSelected = { selectedIndex: Int ->
 //                })
-            PostTabView(imageWithTexts = data.profileTabs) { selectedIndex ->
-                selectedTabIndex = selectedIndex
-                when (selectedTabIndex) {
-                    0 -> {
-                    }
+        PostTabView(imageWithTexts = data.profileTabs) { selectedIndex ->
+            selectedTabIndex = selectedIndex
+            when (selectedTabIndex) {
+                0 -> {
 
-                    1 -> {
-                    }
+                }
 
-                    2 -> {
-                    }
+                1 -> {
+                }
 
-                    3 -> {
-                    }
+                2 -> {
+                }
+
+                3 -> {
                 }
             }
-            PostSection(posts = data.posts)
         }
-    }
-}
-
-
-@Composable
-fun InstagramAppBar(name: String, modifier: Modifier = Modifier) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceAround,
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-    ) {
-        Icon(
-            imageVector = Icons.Default.ArrowBack,
-            contentDescription = "Back",
-            tint = Color.Black,
-            modifier = Modifier.size(24.dp)
-        )
-        Text(
-            text = name,
-            overflow = TextOverflow.Ellipsis,
-            fontWeight = FontWeight.Bold,
-            fontSize = 20.sp
-        )
-        Icon(
-            imageVector = Icons.Default.Notifications,
-            contentDescription = "Back",
-            tint = Color.Black,
-            modifier = Modifier.size(24.dp)
-        )
-        Icon(
-            imageVector = Icons.Default.Menu,
-            contentDescription = "Back",
-            tint = Color.Black,
-            modifier = Modifier.size(24.dp)
-        )
+        PostSection(posts = data.posts)
     }
 }
 

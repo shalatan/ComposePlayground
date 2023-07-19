@@ -1,10 +1,14 @@
 package com.example.myapplication.clones.instagram
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.Grid4x4
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ScreenShare
 import androidx.compose.material.icons.filled.Tv
 import androidx.compose.material.icons.filled.VideoFile
+import androidx.compose.material.icons.filled.VideoLibrary
 import com.example.myapplication.R
 import com.example.myapplication.clones.instagram.model.IconWithText
 import com.example.myapplication.clones.instagram.model.StoryHighlight
@@ -24,6 +28,13 @@ object InstagramDatasource {
         StoryHighlight(image = R.drawable.android_superhero4, text = "Batman"),
         StoryHighlight(image = R.drawable.android_superhero5, text = "IceWhite"),
         StoryHighlight(image = R.drawable.android_superhero6, text = "Curly")
+    )
+
+    val homeTabs = listOf<IconWithText>(
+        IconWithText(vector = Icons.Default.Home, text = "Home"),
+        IconWithText(vector = Icons.Default.Explore, text = "Explore"),
+        IconWithText(vector = Icons.Default.VideoLibrary, text = "Reels"),
+        IconWithText(vector = Icons.Default.Person, text = "Profile")
     )
 
     val profileTabs = listOf<IconWithText>(
