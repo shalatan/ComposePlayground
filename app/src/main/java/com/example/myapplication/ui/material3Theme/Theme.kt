@@ -1,4 +1,4 @@
-package com.example.myapplication.unit3.ui.theme
+package com.example.myapplication.ui.material3Theme
 
 import android.app.Activity
 import android.os.Build
@@ -92,7 +92,7 @@ private val DarkColors = darkColorScheme(
 )
 
 @Composable
-fun MyApplicationTheme(
+fun MyApplicationMaterial3Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

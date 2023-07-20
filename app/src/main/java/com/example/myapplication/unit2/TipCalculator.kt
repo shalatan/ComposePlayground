@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
-import com.example.myapplication.ui.materialTheme.MyApplicationTheme
+import com.example.myapplication.ui.material3Theme.MyApplicationMaterial3Theme
 import java.text.NumberFormat
 
 //TODO: complete testing codeLab later
@@ -27,7 +27,7 @@ class TipCalculator : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
+            MyApplicationMaterial3Theme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -160,7 +160,7 @@ private fun calculateTip(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview8() {
-    MyApplicationTheme {
+    MyApplicationMaterial3Theme {
         TipTimeLayout()
     }
 }

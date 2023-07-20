@@ -48,7 +48,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.R
-import com.example.myapplication.unit3.ui.theme.MyApplicationTheme
+import com.example.myapplication.ui.material3Theme.MyApplicationMaterial3Theme
 
 data class Dog(
     @DrawableRes val imageResourceId: Int,
@@ -75,7 +75,7 @@ class WoofApp : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
+            MyApplicationMaterial3Theme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -259,7 +259,7 @@ fun DogHobby(
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview2() {
-    MyApplicationTheme {
+    MyApplicationMaterial3Theme {
         WoofAppScreen()
     }
 }

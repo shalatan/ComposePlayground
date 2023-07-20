@@ -18,7 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.myapplication.ui.theme.MyApplicationTheme
+import com.example.myapplication.ui.material3Theme.MyApplicationMaterial3Theme
 import com.example.myapplication.R
 
 data class Art(val title: String, val artist: String, val image: Int, val year: Int)
@@ -33,7 +33,7 @@ class ArtSpace : ComponentActivity() {
             Art("Code Haha Haha Haha Haha", "Picasso Singh", R.drawable.dice_4, 2025),
         )
         setContent {
-            MyApplicationTheme {
+            MyApplicationMaterial3Theme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -135,7 +135,7 @@ fun ButtonsLayout(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DefaultPreview9() {
-    MyApplicationTheme {
+    MyApplicationMaterial3Theme {
         val arts = listOf<Art>(
             Art("Code Haha", "Pablo Singh", R.drawable.dice_1, 1875),
             Art("Code Haha Haha", "Da Vinci Singh", R.drawable.dice_2, 1709),

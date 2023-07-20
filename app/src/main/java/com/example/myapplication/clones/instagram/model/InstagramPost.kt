@@ -1,9 +1,15 @@
 package com.example.myapplication.clones.instagram.model
 
+import androidx.annotation.DrawableRes
+
 data class InstagramPost(
-    val username: String,
-    val imageUrl: String,
+    val userId: String,
+    @DrawableRes
+    val userProfileImage: Int,
+    @DrawableRes
+    val image: Int,
+    val caption: String,
     val likes: Int,
     val comments: Int,
-    val time: String
+    val time: String,
 )

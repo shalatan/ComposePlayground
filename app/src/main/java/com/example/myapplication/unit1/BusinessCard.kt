@@ -25,13 +25,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
-import com.example.myapplication.ui.theme.MyApplicationTheme
+import com.example.myapplication.ui.material3Theme.MyApplicationMaterial3Theme
+import com.example.myapplication.ui.materialTheme.MyApplicationMaterialTheme
 
 class BusinessCard : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
+            MyApplicationMaterialTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -118,7 +119,7 @@ fun ContactInformation(icon: ImageVector, info: String) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview5() {
-    MyApplicationTheme {
+    MyApplicationMaterial3Theme {
         BusinessCardScreen()
     }
 }

@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.VideoFile
 import androidx.compose.material.icons.filled.VideoLibrary
 import com.example.myapplication.R
 import com.example.myapplication.clones.instagram.model.IconWithText
+import com.example.myapplication.clones.instagram.model.InstagramPost
 import com.example.myapplication.clones.instagram.model.StoryHighlight
 
 object InstagramDatasource {
@@ -37,6 +38,90 @@ object InstagramDatasource {
         IconWithText(vector = Icons.Default.Person, text = "Profile")
     )
 
+    val homePosts = listOf<InstagramPost>(
+        InstagramPost(
+            "bella",
+            R.drawable.android_superhero1,
+            R.drawable.dog_bella,
+            "New dog",
+            34,
+            88,
+            "5 hours ago"
+        ),
+        InstagramPost(
+            "bella",
+            R.drawable.android_superhero2,
+            R.drawable.dog_faye,
+            "New dog",
+            34,
+            88,
+            "5 hours ago"
+        ),
+        InstagramPost(
+            "bella",
+            R.drawable.android_superhero2,
+            R.drawable.topic_fashion,
+            "New dog",
+            34,
+            88,
+            "5 hours ago"
+        ),
+        InstagramPost(
+            "bella",
+            R.drawable.android_superhero4,
+            R.drawable.topic_architecture,
+            "New dog",
+            34,
+            88,
+            "5 hours ago"
+        ),
+        InstagramPost(
+            "bella",
+            R.drawable.android_superhero3,
+            R.drawable.dog_lola,
+            "New dog",
+            34,
+            88,
+            "5 hours ago"
+        ),
+        InstagramPost(
+            "bella",
+            R.drawable.android_superhero5,
+            R.drawable.topic_architecture,
+            "New dog",
+            34,
+            88,
+            "5 hours ago"
+        ),
+        InstagramPost(
+            "bella",
+            R.drawable.android_superhero6,
+            R.drawable.topic_crafts,
+            "New dog",
+            34,
+            88,
+            "5 hours ago"
+        ),
+        InstagramPost(
+            "bella",
+            R.drawable.android_superhero1,
+            R.drawable.dog_nox,
+            "New dog",
+            34,
+            88,
+            "5 hours ago"
+        ),
+        InstagramPost(
+            "bella",
+            R.drawable.android_superhero5,
+            R.drawable.dog_moana,
+            "New dog",
+            34,
+            88,
+            "5 hours ago"
+        ),
+    )
+
     val profileTabs = listOf<IconWithText>(
         IconWithText(vector = Icons.Default.Grid4x4, text = "Posts"),
         IconWithText(vector = Icons.Default.VideoFile, text = "Reels"),
@@ -44,7 +129,7 @@ object InstagramDatasource {
         IconWithText(vector = Icons.Default.ScreenShare, text = "Shares")
     )
 
-    val posts = listOf<Int>(
+    val profilePosts = listOf<Int>(
         R.drawable.dog_bella,
         R.drawable.topic_fashion,
         R.drawable.dog_koda,

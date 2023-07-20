@@ -36,10 +36,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.clones.instagram.model.IconWithText
-import com.example.myapplication.clones.instagram.model.InstagramScreens
 import com.example.myapplication.clones.instagram.theme.InstagramTheme
 import com.example.myapplication.clones.instagram.ui.ExploreScreen
 import com.example.myapplication.clones.instagram.ui.HomeScreen

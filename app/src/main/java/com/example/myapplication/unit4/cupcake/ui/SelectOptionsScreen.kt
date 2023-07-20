@@ -23,7 +23,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.myapplication.R
-import com.example.myapplication.ui.theme.MyApplicationTheme
+import com.example.myapplication.ui.material3Theme.MyApplicationMaterial3Theme
 
 @Composable
 fun SelectOptionScreen(
@@ -107,7 +107,7 @@ fun SingleOptionUI(
 @Preview
 @Composable
 fun SelectOptionPreview() {
-    MyApplicationTheme {
+    MyApplicationMaterial3Theme {
         SelectOptionScreen(
             subtotal = "299.99",
             options = listOf("Option 1", "Option 2", "Option 3", "Option 4"),

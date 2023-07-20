@@ -18,7 +18,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedButton
@@ -35,10 +34,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -51,6 +48,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
+import com.example.myapplication.clones.instagram.RoundImage
 import com.example.myapplication.clones.instagram.model.IconWithText
 import com.example.myapplication.clones.instagram.InstagramDatasource as data
 import com.example.myapplication.clones.instagram.model.StoryHighlight
@@ -58,7 +56,7 @@ import com.example.myapplication.clones.instagram.theme.InstagramTheme
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview6() {
+fun ProfileScreenPreview() {
     InstagramTheme {
         ProfileScreen()
     }
@@ -104,7 +102,7 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
                 }
             }
         }
-        PostSection(posts = data.posts)
+        PostSection(posts = data.profilePosts)
     }
 }
 
@@ -220,20 +218,6 @@ fun ProfileDescription(
         }
     }
 
-}
-
-@Composable
-fun RoundImage(image: Painter, modifier: Modifier = Modifier) {
-    Image(
-        painter = image,
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
-        modifier = modifier
-            .aspectRatio(1f, matchHeightConstraintsFirst = true)
-            .border(width = 1.dp, color = Color.LightGray, shape = CircleShape)
-            .padding(3.dp)
-            .clip(CircleShape)
-    )
 }
 
 @Composable
