@@ -1,6 +1,7 @@
 package com.example.myapplication.clones.instagram
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
@@ -71,6 +72,7 @@ fun InstagramApp(
     var selectedBottomTab by rememberSaveable {
         mutableIntStateOf(0)
     }
+    Log.e("HELPME", "updated selectedBottomTab to $selectedBottomTab")
     Scaffold(
         topBar = {
             InstagramAppBar(name = data.userName)
@@ -112,10 +114,6 @@ fun BottomNav(
     onClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-//    val backStackEntry by navController.currentBackStackEntryAsState()
-//    val currentScreen = CupcakeScreen.valueOf(
-//        backStackEntry?.destination?.route ?: InstagramScreens.HomeScreen.name
-//    )
     var selectedTabIndex by remember {
         mutableIntStateOf(0)
     }
@@ -134,7 +132,11 @@ fun BottomNav(
                     )
                 },
                 selected = selectedTabIndex == index,
-                onClick = { selectedTabIndex = index })
+                onClick = {
+                    selectedTabIndex = index
+                    onClick(index)
+                }
+            )
         }
     }
 }
