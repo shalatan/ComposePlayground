@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -37,14 +36,13 @@ import com.example.myapplication.clones.instagram.InstagramDatasource as data
 @Composable
 fun HomeScreenPreview() {
     InstagramTheme {
-//        HomeScreen()
         InstagramPostItem(post = data.homePosts[0])
     }
 }
 
 @Composable
-fun HomeScreen() {
-    HomeFeedSection(posts = data.homePosts)
+fun HomeScreen(modifier: Modifier = Modifier) {
+    HomeFeedSection(modifier = modifier, posts = data.homePosts)
 }
 
 @Composable
@@ -96,32 +94,35 @@ fun InstagramPostItem(modifier: Modifier = Modifier, post: InstagramPost) {
                 .fillMaxWidth()
                 .padding(horizontal = 8.dp, vertical = 4.dp)
         ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ig_heart_empty),
-                contentDescription = null,
-                tint = Color.Black,
-                modifier = Modifier.size(24.dp)
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.ig_chat),
-                contentDescription = null,
-                tint = Color.Black,
-                modifier = Modifier.size(24.dp)
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.ig_send),
-                contentDescription = null,
-                tint = Color.Black,
-                modifier = Modifier.size(24.dp)
-            )
-            Spacer(modifier = Modifier.width(12.dp))
+            Row(modifier = Modifier.weight(9f)) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ig_heart_empty),
+                    contentDescription = null,
+                    tint = Color.Black,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Icon(
+                    painter = painterResource(id = R.drawable.ig_chat),
+                    contentDescription = null,
+                    tint = Color.Black,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Icon(
+                    painter = painterResource(id = R.drawable.ig_send),
+                    contentDescription = null,
+                    tint = Color.Black,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
             Icon(
                 painter = painterResource(id = R.drawable.ig_save_empty),
                 contentDescription = null,
                 tint = Color.Black,
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier
+                    .size(24.dp)
+                    .weight(1f)
             )
         }
         Spacer(modifier = Modifier.height(4.dp))

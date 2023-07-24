@@ -12,14 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".adv.mySoothe.MySootheActivity"-->
-<!--            android:exported="false"-->
-<!--            android:label="@string/title_activity_my_soothe"-->
-<!--            android:theme="@style/Theme.MyApplication" />-->
-        <!-- android:name=".clones.instagram.InstagramActivity" -->
         <activity
-            android:name=".adv.mySoothe.MySootheActivity"
+         android:name=".clones.instagram.InstagramActivity"
             android:exported="true"
             android:theme="@style/Theme.MyApplication">
             <intent-filter>

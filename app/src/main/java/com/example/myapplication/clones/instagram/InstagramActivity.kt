@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
@@ -27,7 +25,6 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -52,8 +49,7 @@ class InstagramActivity : ComponentActivity() {
             InstagramTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
                     InstagramApp()
                 }
@@ -64,8 +60,7 @@ class InstagramActivity : ComponentActivity() {
 
 @Composable
 fun InstagramApp(
-    modifier: Modifier = Modifier,
-    navController: NavController = rememberNavController()
+    modifier: Modifier = Modifier, navController: NavController = rememberNavController()
 ) {
     var selectedBottomTab by rememberSaveable {
         mutableIntStateOf(0)
@@ -73,21 +68,29 @@ fun InstagramApp(
     Log.e("HELPME", "updated selectedBottomTab to $selectedBottomTab")
     Scaffold(
         topBar = {
-            InstagramAppBar(name = data.userName)
+            InstagramAppBar(
+                name = when (selectedBottomTab) {
+                    0 -> "Instagram"
+                    1 -> "Explore"
+                    2 -> "Likes"
+                    3 -> data.userName
+                    else -> {
+                        "Instagrammm"
+                    }
+                }
+            )
         },
         bottomBar = {
-            BottomNav(
-                navController = navController,
+            BottomNav(navController = navController,
                 tabs = data.homeTabs,
                 onClick = { clickedIndex ->
                     selectedBottomTab = clickedIndex
-                }
-            )
+                })
         },
     ) { paddingValues ->
         when (selectedBottomTab) {
             0 -> {
-                HomeScreen()
+                HomeScreen(modifier = Modifier.padding(paddingValues))
             }
 
             1 -> {
@@ -116,61 +119,61 @@ fun BottomNav(
         mutableIntStateOf(0)
     }
     BottomNavigation(
-        modifier = modifier,
-        backgroundColor = Color.Transparent
+        modifier = modifier, backgroundColor = Color.White
     ) {
         tabs.forEachIndexed { index, screen ->
             val selected = selectedTabIndex == index
-            BottomNavigationItem(
-                icon = {
-                    Icon(
-                        imageVector = screen.vector,
-                        contentDescription = screen.text,
-                        tint = if (selected) Color.Black else Color.Gray
-                    )
-                },
-                selected = selectedTabIndex == index,
-                onClick = {
-                    selectedTabIndex = index
-                    onClick(index)
-                }
-            )
+            BottomNavigationItem(icon = {
+                Icon(
+                    imageVector = screen.vector,
+                    contentDescription = screen.text,
+                    tint = if (selected) Color.Black else Color.Gray
+                )
+            }, selected = selectedTabIndex == index, onClick = {
+                selectedTabIndex = index
+                onClick(index)
+            })
         }
     }
 }
 
 @Composable
 fun InstagramAppBar(name: String, modifier: Modifier = Modifier) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceAround,
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(8.dp)
+    TopAppBar(
+        modifier = modifier, backgroundColor = Color.White
     ) {
         Icon(
             imageVector = Icons.Default.ArrowBack,
             contentDescription = "Back",
             tint = Color.Black,
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier
+                .size(24.dp)
+                .weight(1f)
         )
         Text(
             text = name,
             overflow = TextOverflow.Ellipsis,
             fontWeight = FontWeight.Bold,
-            fontSize = 20.sp
+            fontSize = 20.sp,
+            modifier = Modifier
+                .size(24.dp)
+                .weight(4f)
         )
         Icon(
             imageVector = Icons.Default.Notifications,
             contentDescription = "Back",
             tint = Color.Black,
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier
+                .size(24.dp)
+                .weight(1f)
         )
         Icon(
             imageVector = Icons.Default.Menu,
             contentDescription = "Back",
             tint = Color.Black,
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier
+                .size(24.dp)
+                .weight(1f)
         )
     }
 }
