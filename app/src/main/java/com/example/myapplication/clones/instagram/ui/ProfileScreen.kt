@@ -2,6 +2,8 @@ package com.example.myapplication.clones.instagram.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,12 +15,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Tab
@@ -42,16 +44,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
+import com.example.myapplication.clones.instagram.HighlightSection
 import com.example.myapplication.clones.instagram.RoundImage
 import com.example.myapplication.clones.instagram.model.IconWithText
+import com.example.myapplication.clones.instagram.model.InstagramPost
 import com.example.myapplication.clones.instagram.InstagramDatasource as data
-import com.example.myapplication.clones.instagram.model.StoryHighlight
 import com.example.myapplication.clones.instagram.theme.InstagramTheme
 
 @Preview(showBackground = true)
@@ -77,14 +78,12 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(16.dp))
         HighlightSection(
             highlights = data.highlights,
+            unseen = false,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
-//            PostTabView(imageWithTexts = data.profileTabs,
-//                onTabSelected = { selectedIndex: Int ->
-//                })
         PostTabView(imageWithTexts = data.profileTabs) { selectedIndex ->
             selectedTabIndex = selectedIndex
             when (selectedTabIndex) {
@@ -102,7 +101,7 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
                 }
             }
         }
-        PostSection(posts = data.profilePosts)
+        PostSection(posts = data.samplePosts)
     }
 }
 
@@ -118,6 +117,7 @@ fun ProfileDetailSection(modifier: Modifier = Modifier) {
         ) {
             RoundImage(
                 image = painterResource(id = R.drawable.dog_bella),
+                unseen = true,
                 modifier = Modifier
                     .size(100.dp)
                     .weight(3f)
@@ -130,7 +130,7 @@ fun ProfileDetailSection(modifier: Modifier = Modifier) {
             userDisplayName = data.userName,
             userDescription = data.userBio,
             userLink = data.userUrl,
-            followedBy = listOf("charles babbage", "john v neuman"),
+            followedBy = listOf("charles_babbage", "john_v_neuman"),
             otherCount = 88
         )
     }
@@ -263,32 +263,6 @@ fun ActionButton(
 }
 
 @Composable
-fun HighlightSection(modifier: Modifier = Modifier, highlights: List<StoryHighlight>) {
-    LazyRow(modifier = modifier) {
-        items(highlights) {
-            SingleHighlight(storyHighlight = it, modifier = Modifier)
-        }
-    }
-}
-
-@Composable
-fun SingleHighlight(storyHighlight: StoryHighlight, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier.padding(end = 16.dp), horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        RoundImage(
-            image = painterResource(id = storyHighlight.image), modifier = Modifier.size(70.dp)
-        )
-        Spacer(modifier = Modifier.height(4.dp))
-        Text(
-            text = storyHighlight.text,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Center
-        )
-    }
-}
-
-@Composable
 fun PostTabView(
     modifier: Modifier = Modifier,
     imageWithTexts: List<IconWithText>,
@@ -327,7 +301,7 @@ fun PostTabView(
 
 @Composable
 fun PostSection(
-    posts: List<Int>, modifier: Modifier = Modifier
+    posts: List<InstagramPost>, modifier: Modifier = Modifier
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
@@ -336,7 +310,7 @@ fun PostSection(
     ) {
         items(posts) {
             Image(
-                painter = painterResource(id = it),
+                painter = painterResource(id = it.image),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

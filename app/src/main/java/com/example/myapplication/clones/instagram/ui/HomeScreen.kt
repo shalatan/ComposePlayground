@@ -1,10 +1,11 @@
 package com.example.myapplication.clones.instagram.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Icon
@@ -28,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
+import com.example.myapplication.clones.instagram.HighlightSection
 import com.example.myapplication.clones.instagram.RoundImage
 import com.example.myapplication.clones.instagram.model.InstagramPost
 import com.example.myapplication.clones.instagram.theme.InstagramTheme
@@ -37,19 +40,28 @@ import com.example.myapplication.clones.instagram.InstagramDatasource as data
 @Composable
 fun HomeScreenPreview() {
     InstagramTheme {
-//        HomeScreen()
-        InstagramPostItem(post = data.homePosts[0])
+        HomeScreen()
     }
 }
 
 @Composable
-fun HomeScreen() {
-    HomeFeedSection(posts = data.homePosts)
+fun HomeScreen(modifier: Modifier = Modifier) {
+    Column(modifier = modifier.scrollable(rememberScrollState(), Orientation.Vertical)) {
+//    Column(modifier = modifier.verticalScroll(rememberScrollState())) {
+        HighlightSection(
+            highlights = data.highlights,
+            unseen = true,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 16.dp)
+        )
+        HomeFeedSection(modifier = Modifier, posts = data.samplePosts)
+    }
 }
 
 @Composable
 fun HomeFeedSection(modifier: Modifier = Modifier, posts: List<InstagramPost>) {
-    LazyColumn {
+    LazyColumn(modifier = modifier) {
         items(posts) { post ->
             InstagramPostItem(post = post)
         }
@@ -69,6 +81,7 @@ fun InstagramPostItem(modifier: Modifier = Modifier, post: InstagramPost) {
         ) {
             RoundImage(
                 image = painterResource(id = post.userProfileImage),
+                unseen = false,
                 modifier = Modifier
                     .size(32.dp)
                     .weight(1f)
@@ -94,43 +107,46 @@ fun InstagramPostItem(modifier: Modifier = Modifier, post: InstagramPost) {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp, vertical = 4.dp)
+                .padding(horizontal = 16.dp, vertical = 4.dp)
         ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ig_heart_empty),
-                contentDescription = null,
-                tint = Color.Black,
-                modifier = Modifier.size(24.dp)
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.ig_chat),
-                contentDescription = null,
-                tint = Color.Black,
-                modifier = Modifier.size(24.dp)
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.ig_send),
-                contentDescription = null,
-                tint = Color.Black,
-                modifier = Modifier.size(24.dp)
-            )
-            Spacer(modifier = Modifier.width(12.dp))
+            Row(modifier = Modifier.weight(9f)) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ig_heart_empty),
+                    contentDescription = null,
+                    tint = Color.Black,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Icon(
+                    painter = painterResource(id = R.drawable.ig_chat),
+                    contentDescription = null,
+                    tint = Color.Black,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Icon(
+                    painter = painterResource(id = R.drawable.ig_send),
+                    contentDescription = null,
+                    tint = Color.Black,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
             Icon(
                 painter = painterResource(id = R.drawable.ig_save_empty),
                 contentDescription = null,
                 tint = Color.Black,
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier
+                    .size(24.dp)
+                    .weight(1f)
             )
         }
         Spacer(modifier = Modifier.height(4.dp))
-        Text(text = "${post.likes} likes", modifier = Modifier.padding(horizontal = 8.dp))
+        Text(text = "${post.likes} likes", modifier = Modifier.padding(horizontal = 16.dp))
         Spacer(modifier = Modifier.height(4.dp))
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp),
+                .padding(horizontal = 16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(text = post.userId, fontWeight = FontWeight.SemiBold)
@@ -141,15 +157,15 @@ fun InstagramPostItem(modifier: Modifier = Modifier, post: InstagramPost) {
         Text(
             text = "View all ${post.comments} comments",
             color = Color.Gray,
-            fontSize = 16.sp,
-            modifier = Modifier.padding(horizontal = 8.dp),
+            fontSize = 14.sp,
+            modifier = Modifier.padding(horizontal = 16.dp),
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = post.time,
             color = Color.Gray,
             fontSize = 12.sp,
-            modifier = Modifier.padding(horizontal = 8.dp),
+            modifier = Modifier.padding(horizontal = 16.dp),
         )
     }
 }

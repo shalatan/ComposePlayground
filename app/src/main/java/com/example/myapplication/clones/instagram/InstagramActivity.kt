@@ -15,7 +15,6 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.MaterialTheme
@@ -30,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -52,8 +52,7 @@ class InstagramActivity : ComponentActivity() {
             InstagramTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
                     InstagramApp()
                 }
@@ -73,25 +72,33 @@ fun InstagramApp(
     Log.e("HELPME", "updated selectedBottomTab to $selectedBottomTab")
     Scaffold(
         topBar = {
-            InstagramAppBar(name = data.userName)
+            InstagramAppBar(
+                name = when (selectedBottomTab) {
+                    0 -> "Instagram"
+                    1 -> "Explore"
+                    2 -> "Reels"
+                    3 -> data.userId
+                    else -> {
+                        "Instagram"
+                    }
+                }
+            )
         },
         bottomBar = {
-            BottomNav(
-                navController = navController,
+            BottomNav(navController = navController,
                 tabs = data.homeTabs,
                 onClick = { clickedIndex ->
                     selectedBottomTab = clickedIndex
-                }
-            )
+                })
         },
     ) { paddingValues ->
         when (selectedBottomTab) {
             0 -> {
-                HomeScreen()
+                HomeScreen(modifier = Modifier.padding(paddingValues))
             }
 
             1 -> {
-                ExploreScreen()
+                ExploreScreen(modifier = Modifier.padding(paddingValues))
             }
 
             2 -> {
@@ -117,24 +124,20 @@ fun BottomNav(
     }
     BottomNavigation(
         modifier = modifier,
-        backgroundColor = Color.Transparent
+        backgroundColor = Color.White
     ) {
         tabs.forEachIndexed { index, screen ->
             val selected = selectedTabIndex == index
-            BottomNavigationItem(
-                icon = {
-                    Icon(
-                        imageVector = screen.vector,
-                        contentDescription = screen.text,
-                        tint = if (selected) Color.Black else Color.Gray
-                    )
-                },
-                selected = selectedTabIndex == index,
-                onClick = {
-                    selectedTabIndex = index
-                    onClick(index)
-                }
-            )
+            BottomNavigationItem(icon = {
+                Icon(
+                    imageVector = screen.vector,
+                    contentDescription = screen.text,
+                    tint = if (selected) Color.Black else Color.Gray
+                )
+            }, selected = selectedTabIndex == index, onClick = {
+                selectedTabIndex = index
+                onClick(index)
+            })
         }
     }
 }
@@ -146,31 +149,41 @@ fun InstagramAppBar(name: String, modifier: Modifier = Modifier) {
         horizontalArrangement = Arrangement.SpaceAround,
         modifier = modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
-        Icon(
-            imageVector = Icons.Default.ArrowBack,
-            contentDescription = "Back",
-            tint = Color.Black,
-            modifier = Modifier.size(24.dp)
-        )
+//        Icon(
+//            imageVector = Icons.Default.ArrowBack,
+//            contentDescription = "Back",
+//            tint = Color.Black,
+//            modifier = Modifier
+//                .size(24.dp)
+//                .weight(1f)
+//        )
+//        Spacer(modifier = Modifier.width(16.dp))
         Text(
             text = name,
             overflow = TextOverflow.Ellipsis,
-            fontWeight = FontWeight.Bold,
-            fontSize = 20.sp
+            fontWeight = FontWeight.SemiBold,
+            fontStyle = FontStyle.Italic,
+            fontSize = 24.sp,
+            letterSpacing = 0.5.sp,
+            modifier = Modifier.weight(8f)
         )
         Icon(
             imageVector = Icons.Default.Notifications,
             contentDescription = "Back",
             tint = Color.Black,
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier
+                .size(24.dp)
+                .weight(1f)
         )
         Icon(
             imageVector = Icons.Default.Menu,
             contentDescription = "Back",
             tint = Color.Black,
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier
+                .size(24.dp)
+                .weight(1f)
         )
     }
 }

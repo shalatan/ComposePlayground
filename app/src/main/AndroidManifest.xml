@@ -19,7 +19,7 @@
 <!--            android:theme="@style/Theme.MyApplication" />-->
         <!-- android:name=".clones.instagram.InstagramActivity" -->
         <activity
-            android:name=".adv.mySoothe.MySootheActivity"
+         android:name=".clones.instagram.InstagramActivity"
             android:exported="true"
             android:theme="@style/Theme.MyApplication">
             <intent-filter>
