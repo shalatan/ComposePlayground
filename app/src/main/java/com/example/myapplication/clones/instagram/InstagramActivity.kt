@@ -4,16 +4,17 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.MaterialTheme
@@ -25,8 +26,10 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -60,7 +63,8 @@ class InstagramActivity : ComponentActivity() {
 
 @Composable
 fun InstagramApp(
-    modifier: Modifier = Modifier, navController: NavController = rememberNavController()
+    modifier: Modifier = Modifier,
+    navController: NavController = rememberNavController()
 ) {
     var selectedBottomTab by rememberSaveable {
         mutableIntStateOf(0)
@@ -72,10 +76,10 @@ fun InstagramApp(
                 name = when (selectedBottomTab) {
                     0 -> "Instagram"
                     1 -> "Explore"
-                    2 -> "Likes"
-                    3 -> data.userName
+                    2 -> "Reels"
+                    3 -> data.userId
                     else -> {
-                        "Instagrammm"
+                        "Instagram"
                     }
                 }
             )
@@ -94,7 +98,7 @@ fun InstagramApp(
             }
 
             1 -> {
-                ExploreScreen()
+                ExploreScreen(modifier = Modifier.padding(paddingValues))
             }
 
             2 -> {
@@ -119,7 +123,8 @@ fun BottomNav(
         mutableIntStateOf(0)
     }
     BottomNavigation(
-        modifier = modifier, backgroundColor = Color.White
+        modifier = modifier,
+        backgroundColor = Color.White
     ) {
         tabs.forEachIndexed { index, screen ->
             val selected = selectedTabIndex == index
@@ -139,25 +144,30 @@ fun BottomNav(
 
 @Composable
 fun InstagramAppBar(name: String, modifier: Modifier = Modifier) {
-    TopAppBar(
-        modifier = modifier, backgroundColor = Color.White
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceAround,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
-        Icon(
-            imageVector = Icons.Default.ArrowBack,
-            contentDescription = "Back",
-            tint = Color.Black,
-            modifier = Modifier
-                .size(24.dp)
-                .weight(1f)
-        )
+//        Icon(
+//            imageVector = Icons.Default.ArrowBack,
+//            contentDescription = "Back",
+//            tint = Color.Black,
+//            modifier = Modifier
+//                .size(24.dp)
+//                .weight(1f)
+//        )
+//        Spacer(modifier = Modifier.width(16.dp))
         Text(
             text = name,
             overflow = TextOverflow.Ellipsis,
-            fontWeight = FontWeight.Bold,
-            fontSize = 20.sp,
-            modifier = Modifier
-                .size(24.dp)
-                .weight(4f)
+            fontWeight = FontWeight.SemiBold,
+            fontStyle = FontStyle.Italic,
+            fontSize = 24.sp,
+            letterSpacing = 0.5.sp,
+            modifier = Modifier.weight(8f)
         )
         Icon(
             imageVector = Icons.Default.Notifications,
