@@ -90,7 +90,7 @@ fun HomeSection(
 ) {
     Column(modifier = modifier) {
         Text(
-            text = title.toUpperCase(Locale.getDefault()),
+            text = title.uppercase(Locale.getDefault()),
             style = MaterialTheme.typography.displayMedium,
             modifier = Modifier
                 .paddingFromBaseline(top = 40.dp, bottom = 8.dp)
