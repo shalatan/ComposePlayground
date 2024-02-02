@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.VideoLibrary
 import com.example.myapplication.R
 import com.example.myapplication.clones.instagram.model.IconWithText
 import com.example.myapplication.clones.instagram.model.InstagramPost
+import com.example.myapplication.clones.instagram.model.InstagramReel
 import com.example.myapplication.clones.instagram.model.StoryHighlight
 
 object InstagramDatasource {
@@ -206,6 +207,29 @@ object InstagramDatasource {
             34,
             88,
             "5 hours ago"
+        )
+    )
+
+    val sampleReels = listOf<InstagramReel>(
+        InstagramReel(
+            "frankie",
+            R.drawable.android_superhero1,
+            R.drawable.dog_frankie,
+            "White dog",
+            300,
+            8,
+            23,
+            "4 hours ago"
+        ),
+        InstagramReel(
+            "koda",
+            R.drawable.android_superhero6,
+            R.drawable.dog_koda,
+            "Kutte ka naam koda hei",
+            532,
+            88,
+            235,
+            "4 hours ago"
         )
     )
 

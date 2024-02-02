@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.myapplication.clones.instagram.InstagramDatasource
 import com.example.myapplication.clones.instagram.model.IconWithText
 import com.example.myapplication.clones.instagram.theme.InstagramTheme
 import com.example.myapplication.clones.instagram.ui.ExploreScreen
@@ -102,7 +103,10 @@ fun InstagramApp(
             }
 
             2 -> {
-                ReelsScreen()
+                ReelsScreen(
+                    modifier = Modifier.padding(paddingValues),
+                    InstagramDatasource.sampleReels[0]
+                )
             }
 
             3 -> {

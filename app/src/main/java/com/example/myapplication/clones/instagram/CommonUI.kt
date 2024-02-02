@@ -1,8 +1,10 @@
 package com.example.myapplication.clones.instagram
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,20 +23,61 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
 import com.example.myapplication.clones.instagram.model.StoryHighlight
 
 @Preview
 @Composable
 fun CommonUiPreview() {
-    RoundImage(image = painterResource(id = R.drawable.dog_bella), true)
+//    HighlightSection(unseen = true, highlights = InstagramDatasource.highlights)
+        RoundImage(image = painterResource(id = R.drawable.dog_bella), true)
+//    UserActionWithText(drawableRes = R.drawable.ig_heart_empty, text = "Like")
+}
+@Composable
+fun UserAction(@DrawableRes drawableRes: Int) {
+    Icon(
+        bitmap = ImageBitmap.imageResource(id = drawableRes),
+        tint = Color.White,
+        modifier = Modifier.size(16.dp),
+        contentDescription = null
+    )
+}
+
+@Composable
+fun UserActionWithText(
+    @DrawableRes drawableRes: Int,
+    text: String
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceAround,
+        modifier = Modifier
+    ) {
+        Icon(
+            bitmap = ImageBitmap.imageResource(id = drawableRes),
+            tint = Color.White,
+            modifier = Modifier.size(28.dp),
+            contentDescription = null
+        )
+        Spacer(modifier = Modifier.height(2.dp))
+        Text(
+            text = text,
+            color = Color.White,
+            fontSize = 13.sp,
+            fontWeight = FontWeight.SemiBold
+        )
+    }
 }
 
 @Composable
@@ -68,7 +112,6 @@ fun RoundImage(
             .clip(CircleShape)
     )
 }
-
 
 @Composable
 fun HighlightSection(
