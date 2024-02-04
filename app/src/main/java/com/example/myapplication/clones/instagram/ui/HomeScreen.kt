@@ -84,14 +84,23 @@ fun InstagramPostItem(modifier: Modifier = Modifier, post: InstagramPost) {
                 unseen = false,
                 modifier = Modifier
                     .size(32.dp)
-                    .weight(1f)
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Text(text = post.userId, fontWeight = FontWeight.Bold, modifier = Modifier.weight(8f))
+            Text(
+                text = post.userId, fontWeight = FontWeight.Bold,
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            if (post.isVerified) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_insta_verified),
+                    contentDescription = null,
+                    modifier = Modifier.size(20.dp)
+                )
+            }
+            Spacer(modifier = Modifier.weight(1f))
             Icon(
                 imageVector = Icons.Filled.MoreVert,
                 contentDescription = null,
-                modifier = Modifier.weight(1f)
             )
         }
         Image(
@@ -118,7 +127,7 @@ fun InstagramPostItem(modifier: Modifier = Modifier, post: InstagramPost) {
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Icon(
-                    painter = painterResource(id = R.drawable.ig_chat),
+                    painter = painterResource(id = R.drawable.ic_insta_comment),
                     contentDescription = null,
                     tint = Color.Black,
                     modifier = Modifier.size(24.dp)
@@ -141,7 +150,10 @@ fun InstagramPostItem(modifier: Modifier = Modifier, post: InstagramPost) {
             )
         }
         Spacer(modifier = Modifier.height(4.dp))
-        Text(text = "${post.likes} likes", modifier = Modifier.padding(horizontal = 16.dp))
+        Text(
+            text = "${post.likes} likes", fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.padding(horizontal = 16.dp)
+        )
         Spacer(modifier = Modifier.height(4.dp))
         Row(
             modifier = Modifier

@@ -1,5 +1,8 @@
 package com.example.myapplication.clones.instagram
 
+import android.graphics.drawable.Drawable
+import android.media.Image
+import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.Grid4x4
@@ -9,6 +12,10 @@ import androidx.compose.material.icons.filled.ScreenShare
 import androidx.compose.material.icons.filled.Tv
 import androidx.compose.material.icons.filled.VideoFile
 import androidx.compose.material.icons.filled.VideoLibrary
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import com.example.myapplication.R
 import com.example.myapplication.clones.instagram.model.IconWithText
 import com.example.myapplication.clones.instagram.model.InstagramPost
@@ -51,10 +58,11 @@ object InstagramDatasource {
             "bella",
             R.drawable.android_superhero1,
             R.drawable.dog_bella,
-            "White dog",
+            "White dog chilling on small rocks",
             300,
             8,
-            "4 hours ago"
+            "4 hours ago",
+            true
         ),
         InstagramPost(
             "bella",
@@ -63,7 +71,8 @@ object InstagramDatasource {
             "Dog with band he..",
             4,
             89,
-            "1 hours ago"
+            "1 hours ago",
+            false
         ),
         InstagramPost(
             "bella",
@@ -72,7 +81,8 @@ object InstagramDatasource {
             "Fashion day, LGTV",
             0,
             1,
-            "2 day ago"
+            "2 day ago",
+            true
         ),
         InstagramPost(
             "bella",
@@ -81,7 +91,8 @@ object InstagramDatasource {
             "Very big building, but looks average",
             24,
             9,
-            "21 hours ago"
+            "21 hours ago",
+            false
         ),
         InstagramPost(
             "bella",
@@ -90,7 +101,8 @@ object InstagramDatasource {
             "Dog darker than your future",
             200,
             33,
-            "23 minutes ago"
+            "23 minutes ago",
+            false
         ),
         InstagramPost(
             "bella",
@@ -99,7 +111,8 @@ object InstagramDatasource {
             "Craft-man-ship",
             311,
             8,
-            "5 hours ago"
+            "5 hours ago",
+            false
         ),
         InstagramPost(
             "bella",
@@ -108,7 +121,8 @@ object InstagramDatasource {
             "No lifestyle for developers",
             0,
             0,
-            "12 hours ago"
+            "12 hours ago",
+            false
         ),
         InstagramPost(
             "bella",
@@ -117,7 +131,8 @@ object InstagramDatasource {
             "Take one more gyaan",
             32,
             4,
-            "3 days ago"
+            "3 days ago",
+            false
         ),
         InstagramPost(
             "bella",
@@ -126,7 +141,8 @@ object InstagramDatasource {
             "New dog",
             34,
             88,
-            "5 hours ago"
+            "5 hours ago",
+            false
         ), InstagramPost(
             "bella",
             R.drawable.android_superhero1,
@@ -134,7 +150,8 @@ object InstagramDatasource {
             "New dog",
             34,
             88,
-            "5 hours ago"
+            "5 hours ago",
+            false
         ),
         InstagramPost(
             "bella",
@@ -143,7 +160,8 @@ object InstagramDatasource {
             "New dog",
             34,
             88,
-            "5 hours ago"
+            "5 hours ago",
+            true
         ),
         InstagramPost(
             "bella",
@@ -152,7 +170,8 @@ object InstagramDatasource {
             "New dog",
             34,
             88,
-            "5 hours ago"
+            "5 hours ago",
+            true
         ),
         InstagramPost(
             "bella",
@@ -161,25 +180,8 @@ object InstagramDatasource {
             "New dog",
             34,
             88,
-            "5 hours ago"
-        ),
-        InstagramPost(
-            "bella",
-            R.drawable.android_superhero3,
-            R.drawable.dog_frankie,
-            "New dog",
-            34,
-            88,
-            "5 hours ago"
-        ),
-        InstagramPost(
-            "bella",
-            R.drawable.android_superhero5,
-            R.drawable.topic_film,
-            "New dog",
-            34,
-            88,
-            "5 hours ago"
+            "5 hours ago",
+            false
         ),
         InstagramPost(
             "bella",
@@ -188,7 +190,8 @@ object InstagramDatasource {
             "New dog",
             34,
             88,
-            "5 hours ago"
+            "5 hours ago",
+            false
         ),
         InstagramPost(
             "bella",
@@ -197,16 +200,8 @@ object InstagramDatasource {
             "New dog",
             34,
             88,
-            "5 hours ago"
-        ),
-        InstagramPost(
-            "bella",
-            R.drawable.android_superhero5,
-            R.drawable.topic_gaming,
-            "New dog",
-            34,
-            88,
-            "5 hours ago"
+            "5 hours ago",
+            false
         )
     )
 
@@ -219,7 +214,8 @@ object InstagramDatasource {
             300,
             8,
             23,
-            "4 hours ago"
+            "4 hours ago",
+            "frankies - Original audio"
         ),
         InstagramReel(
             "koda",
@@ -229,7 +225,8 @@ object InstagramDatasource {
             532,
             88,
             235,
-            "4 hours ago"
+            "4 hours ago",
+            "koda - Original audio"
         )
     )
 

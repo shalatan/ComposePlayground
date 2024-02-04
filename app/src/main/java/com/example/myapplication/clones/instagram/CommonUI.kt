@@ -41,15 +41,16 @@ import com.example.myapplication.clones.instagram.model.StoryHighlight
 @Composable
 fun CommonUiPreview() {
 //    HighlightSection(unseen = true, highlights = InstagramDatasource.highlights)
-        RoundImage(image = painterResource(id = R.drawable.dog_bella), true)
+    RoundImage(image = painterResource(id = R.drawable.dog_bella), true)
 //    UserActionWithText(drawableRes = R.drawable.ig_heart_empty, text = "Like")
 }
+
 @Composable
-fun UserAction(@DrawableRes drawableRes: Int) {
+fun UserAction(@DrawableRes drawableRes: Int, modifier: Modifier = Modifier) {
     Icon(
         bitmap = ImageBitmap.imageResource(id = drawableRes),
         tint = Color.White,
-        modifier = Modifier.size(16.dp),
+        modifier = modifier.size(16.dp),
         contentDescription = null
     )
 }

@@ -12,4 +12,5 @@ data class InstagramPost(
     val likes: Int,
     val comments: Int,
     val time: String,
+    val isVerified: Boolean
 )

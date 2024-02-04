@@ -13,4 +13,5 @@ data class InstagramReel(
     val comments: Int,
     val shares: Int,
     val time: String,
+    val audioName:String
 )
