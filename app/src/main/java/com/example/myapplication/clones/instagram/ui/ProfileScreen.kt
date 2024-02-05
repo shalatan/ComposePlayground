@@ -44,6 +44,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
+import com.example.myapplication.adv.mySoothe.model.ImageWithText
 import com.example.myapplication.clones.instagram.HighlightSection
 import com.example.myapplication.clones.instagram.RoundImage
 import com.example.myapplication.clones.instagram.model.IconWithText
@@ -139,9 +140,9 @@ fun ProfileStatSection(modifier: Modifier = Modifier) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        ProfileStats(number = "69", name = "Posts")
-        ProfileStats(number = "69.9", name = "Followers")
-        ProfileStats(number = "96", name = "Following")
+        ProfileStats(number = "100", name = "Posts")
+        ProfileStats(number = "1.5k", name = "Followers")
+        ProfileStats(number = "12", name = "Following")
     }
 }
 
@@ -261,7 +262,7 @@ fun ActionButton(
 @Composable
 fun PostTabView(
     modifier: Modifier = Modifier,
-    imageWithTexts: List<IconWithText>,
+    imageWithTexts: List<ImageWithText>,
     onTabSelected: (selectedIndex: Int) -> Unit
 ) {
     var selectedTabIndex by remember {
@@ -283,7 +284,7 @@ fun PostTabView(
                     onTabSelected(index)
                 }) {
                 Icon(
-                    imageVector = item.vector,
+                    painter = painterResource(id = item.image),
                     contentDescription = item.text,
                     tint = if (selectedTabIndex == index) Color.Black else inactiveColor,
                     modifier = modifier

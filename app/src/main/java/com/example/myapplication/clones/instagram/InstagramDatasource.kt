@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import com.example.myapplication.R
+import com.example.myapplication.adv.mySoothe.model.ImageWithText
 import com.example.myapplication.clones.instagram.model.IconWithText
 import com.example.myapplication.clones.instagram.model.InstagramPost
 import com.example.myapplication.clones.instagram.model.InstagramReel
@@ -46,11 +47,11 @@ object InstagramDatasource {
         IconWithText(vector = Icons.Default.Person, text = "Profile")
     )
 
-    val profileTabs = listOf<IconWithText>(
-        IconWithText(vector = Icons.Default.Grid4x4, text = "Posts"),
-        IconWithText(vector = Icons.Default.VideoFile, text = "Reels"),
-        IconWithText(vector = Icons.Default.Tv, text = "IGTV"),
-        IconWithText(vector = Icons.Default.ScreenShare, text = "Shares")
+    val profileTabs = listOf<ImageWithText>(
+        ImageWithText(image = R.drawable.ic_insta_grid, text = "Posts"),
+        ImageWithText(image = R.drawable.ic_insta_reel, text = "Reels"),
+        ImageWithText(image = R.drawable.ic_insta_igtv, text = "IGTV"),
+        ImageWithText(image = R.drawable.ic_insta_reel, text = "Shares")
     )
 
     val samplePosts = listOf<InstagramPost>(
