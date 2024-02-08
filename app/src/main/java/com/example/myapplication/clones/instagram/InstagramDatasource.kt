@@ -40,11 +40,12 @@ object InstagramDatasource {
         StoryHighlight(image = R.drawable.android_superhero6, text = "Curly")
     )
 
-    val homeTabs = listOf<IconWithText>(
-        IconWithText(vector = Icons.Default.Home, text = "Home"),
-        IconWithText(vector = Icons.Default.Explore, text = "Explore"),
-        IconWithText(vector = Icons.Default.VideoLibrary, text = "Reels"),
-        IconWithText(vector = Icons.Default.Person, text = "Profile")
+    val homeTabs = listOf<ImageWithText>(
+        ImageWithText(image = R.drawable.ic_insta_home, text = "Home"),
+        ImageWithText(image = R.drawable.ic_insta_search, text = "Explore"),
+        ImageWithText(image = R.drawable.ic_insta_add, text = "Add"),
+        ImageWithText(image = R.drawable.ic_insta_reel, text = "Reels"),
+        ImageWithText(image = R.drawable.ic_insta_profile, text = "Profile")
     )
 
     val profileTabs = listOf<ImageWithText>(

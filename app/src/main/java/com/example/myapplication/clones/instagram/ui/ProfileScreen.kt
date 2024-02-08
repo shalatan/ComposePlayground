@@ -47,7 +47,6 @@ import com.example.myapplication.R
 import com.example.myapplication.adv.mySoothe.model.ImageWithText
 import com.example.myapplication.clones.instagram.HighlightSection
 import com.example.myapplication.clones.instagram.RoundImage
-import com.example.myapplication.clones.instagram.model.IconWithText
 import com.example.myapplication.clones.instagram.model.InstagramPost
 import com.example.myapplication.clones.instagram.InstagramDatasource as data
 import com.example.myapplication.clones.instagram.theme.InstagramTheme

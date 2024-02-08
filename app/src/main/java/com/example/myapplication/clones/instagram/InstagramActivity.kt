@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.R
+import com.example.myapplication.adv.mySoothe.model.ImageWithText
 import com.example.myapplication.clones.instagram.InstagramDatasource
 import com.example.myapplication.clones.instagram.model.IconWithText
 import com.example.myapplication.clones.instagram.theme.InstagramTheme
@@ -82,8 +83,9 @@ fun InstagramApp(
                 name = when (selectedBottomTab) {
                     0 -> "Instagram"
                     1 -> "Explore"
-                    2 -> "Reels"
-                    3 -> data.userId
+                    2 -> "Add"
+                    3 -> "Reels"
+                    4 -> data.userId
                     else -> {
                         "Instagram"
                     }
@@ -108,13 +110,17 @@ fun InstagramApp(
             }
 
             2 -> {
+
+            }
+
+            3 -> {
                 ReelsScreen(
                     modifier = Modifier.padding(paddingValues),
                     InstagramDatasource.sampleReels[0]
                 )
             }
 
-            3 -> {
+            4 -> {
                 ProfileScreen(modifier = Modifier.padding(paddingValues))
             }
         }
@@ -124,7 +130,7 @@ fun InstagramApp(
 @Composable
 fun BottomNav(
     navController: NavController,
-    tabs: List<IconWithText>,
+    tabs: List<ImageWithText>,
     onClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -139,9 +145,12 @@ fun BottomNav(
             val selected = selectedTabIndex == index
             BottomNavigationItem(icon = {
                 Icon(
-                    imageVector = screen.vector,
+                    painterResource(id = screen.image),
                     contentDescription = screen.text,
-                    tint = if (selected) Color.Black else Color.Gray
+                    tint = if (selected) Color.Black else Color.Gray,
+                    modifier = modifier
+                        .padding(10.dp)
+                        .size(20.dp)
                 )
             }, selected = selectedTabIndex == index, onClick = {
                 selectedTabIndex = index
