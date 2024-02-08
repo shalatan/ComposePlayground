@@ -17,9 +17,6 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -44,7 +41,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.R
 import com.example.myapplication.adv.mySoothe.model.ImageWithText
 import com.example.myapplication.clones.instagram.InstagramDatasource
-import com.example.myapplication.clones.instagram.model.IconWithText
 import com.example.myapplication.clones.instagram.theme.InstagramTheme
 import com.example.myapplication.clones.instagram.ui.ExploreScreen
 import com.example.myapplication.clones.instagram.ui.HomeScreen

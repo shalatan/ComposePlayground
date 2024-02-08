@@ -1,24 +1,7 @@
 package com.example.myapplication.clones.instagram
 
-import android.graphics.drawable.Drawable
-import android.media.Image
-import androidx.compose.material.Icon
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Explore
-import androidx.compose.material.icons.filled.Grid4x4
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.ScreenShare
-import androidx.compose.material.icons.filled.Tv
-import androidx.compose.material.icons.filled.VideoFile
-import androidx.compose.material.icons.filled.VideoLibrary
-import androidx.compose.material.icons.rounded.Add
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import com.example.myapplication.R
 import com.example.myapplication.adv.mySoothe.model.ImageWithText
-import com.example.myapplication.clones.instagram.model.IconWithText
 import com.example.myapplication.clones.instagram.model.InstagramPost
 import com.example.myapplication.clones.instagram.model.InstagramReel
 import com.example.myapplication.clones.instagram.model.StoryHighlight
